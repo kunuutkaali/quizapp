@@ -1,0 +1,9 @@
+extends ../layout.pug
+
+block content 
+  h1 Creating a quiz
+  form(action="quiz/create-quiz", method="post")
+    label(for="title") Quiz title
+    input(type="text", id="title", name="title", required, autofocus)
+    label(for="description") Description
+    input(type="text", id="description", name="description", required)

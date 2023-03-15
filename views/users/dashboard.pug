@@ -1,0 +1,8 @@
+extends ../layout
+
+block content
+  h1= user.username
+  - avatar = '/images/avatars/' + user.avatar
+  img(src=avatar, alt="Avatar")
+  p Email: #{user.email}
+  p Username: #{user.username}

@@ -1,0 +1,10 @@
+extends ../layout.pug
+
+block content 
+  h1 Creating a quiz category
+  form(action="/quiz/create-quiz-category", method="post")
+    label(for="title") Category title
+    input(type="text", id="title", name="title", required, autofocus)
+    label(for="description") Description
+    input(type="text", id="description", name="description", required)
+    input(type="submit", value="Create")
