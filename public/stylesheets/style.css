@@ -1,8 +1,37 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+/* Navigation */
+nav ul{
+  display:flex;
+  list-style: none;
+  flex-wrap: wrap;
+  margin:0;
+  padding:0;
+}
+nav ul li{
+  display:flex;
+}
+nav ul a{
+  text-decoration: none;
+  padding:0.4rem 0.8rem;
+}
+nav ul a:hover{
+  text-decoration: underline;
+}
+
+/* Questions */
+#quiz-questions{
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  padding-top: 2rem;
+}
+.question-answers{
+  padding:2rem;
+  border-bottom: 1px solid;
 }

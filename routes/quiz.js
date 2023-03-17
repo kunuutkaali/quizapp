@@ -3,12 +3,20 @@ var router = express.Router();
 var connectEnsureLoggedIn = require('connect-ensure-login');
 const Category = require('../models/quizCategory');
 
-// Create a quiz category form
 router.get('/', (req, res, next)=>{
   res.send('Responded with resource')
 })
+// Quiz categories
+router.get('/quiz-categories', async(req, res, next)=>{
+  try {
+    const data = await Category.find();
+    res.render('quiz/quiz-categories', {categories: data});
+  } catch (error) {
+    console.error(error);
+  }
+})
 
-// Create a quiz category form
+// Create quiz category form
 router.get('/create-quiz-category', (req, res, next)=>{
   res.render('quiz/create-quiz-category')
 })
@@ -18,15 +26,28 @@ router.post('/create-quiz-category', async(req, res, next)=>{
   const data = new Category(category);
   try {
     const result = await data.save();
+    console.log(result);
+    res.redirect('/quiz/quiz-categories');
   } catch (error) {
     console.log(error);
   }
 })
 
 
-// Create a quiz
-router.get('/create-quiz', (req, res, next)=>{
-  res.render('quiz/create-quiz')
+// GET Create a quiz form
+router.get('/create-quiz', async(req, res, next)=>{
+  try {
+    const categories = await Category.find();
+    res.render('quiz/create-quiz', {categories: categories});
+  } catch (error) {
+    res.redirect('Something went wrong getting the categories', '/users/dashboard');
+  }
+})
+// POST Create a quiz form
+router.post('/create-quiz', async(req, res, next)=>{
+  const data = req.body;
+  console.log(data);
+  res.redirect('/quiz/create-quiz');
 })
 
 

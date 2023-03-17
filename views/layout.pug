@@ -2,7 +2,10 @@ doctype html
 html
   head
     title= title
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="https://cdn.simplecss.org/simple.min.css")
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     include includes/navigation.pug
     block content
+    script(src="/javascripts/script.js") 

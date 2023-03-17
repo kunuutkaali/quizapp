@@ -1,0 +1,6 @@
+extends ../layout.pug
+block content
+  h1 Categories:
+  each category in categories 
+    h3= category.title
+    p= category.description
