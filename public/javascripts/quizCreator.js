@@ -59,7 +59,6 @@ const updateFields = () =>{
     quizQuestions.appendChild(qDiv);
 
 
-    
     // Iterate answers
     let qa = 1;
     for(let answer of question.answers){
