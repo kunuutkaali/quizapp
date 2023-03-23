@@ -3,17 +3,21 @@ extends ../layout.pug
 block content 
   h1 Creating a quiz
   form(class="form create-quiz-form", action="/quiz/create-quiz", method="post")
-    input(type="submit", value="Save and show")
-    label(for="title") Quiz title
-    input(type="text", id="title", name="title", required, value="Quiz")
-    label(for="category") Quiz category
-    select(id="category")
-      option(selected) New..
-      if locals.categories
-        each category in categories
-          option(value=category.id, selected) #{category.title}
-    label(for="newCategory") If new category:
-    input(type="text", name="newCategory", placeholder="..New Category")
+    div.grid
+      input(type="submit", value="Save and show")
+      label(for="title") Quiz title:
+      input(type="text", id="title", name="title", required, value="Quiz")
+    label(for="newCategory") Check for new category:
+    input(type="checkbox", name="newCategory", id="newCategory")
+    div#categoryGroup
+      label(for="category") Quiz category:
+      select(name='categoryId', id="category")
+        option(selected) New..
+        if locals.categories
+          each category in categories
+            option(value=category.id, selected) #{category.title}
+    label(for="categoryTitle", id='newCategoryLabel', style={display:'none'}) New category:
+    input(type="text", name="categoryTitle", id="categoryTitle", style={display:'none'}, placeholder='Category...')
     label(for="description") Quiz description:
     input(type="text", id="description", name="description", value="Some description")
     

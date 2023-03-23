@@ -1,5 +1,29 @@
-const quizQuestions = document.getElementById('quiz-questions');
+// Create category input if new category
+const showNewCategoryInput = () =>{
+  if(newCategory.checked){
+    // Show new category input
+    categoryTitle.style = 'display:block';
+    newCategoryLabel.style = 'display:block';
+    // Hide existing categorylist
+    categoryGroup.style = 'display:none';
+  }else{
+    // Hide new category input
+    categoryTitle.style = 'display:none';
+    newCategoryLabel.style = 'display:none';
+    
+    // Show existing categorylist
+    categoryGroup.style = 'display:block';
+  }
+  console.log(newCategoryCheckbox.checked);
+}
+const categoryGroup = document.getElementById('categoryGroup');
+const newCategoryLabel = document.getElementById('newCategoryLabel');
+const categoryTitle = document.getElementById('categoryTitle');
+const newCategory = document.getElementById('newCategory');
+newCategory.addEventListener('change', showNewCategoryInput);
 
+
+const quizQuestions = document.getElementById('quiz-questions');
 
 let questionsList = [{
   question: 'Question one',
@@ -149,7 +173,7 @@ const updateFields = () =>{
     // Create Label for input:
     let qLabel = createLabel(qName, 'Question:');
     // Create question input:
-    let qInput = createQuestionTextInput('questions' + qIndex + '.question', qName , question.question, qIndex);
+    let qInput = createQuestionTextInput('question', qName , question.question, qIndex);
     // Create answers container
     const aContainer = createContainer('question-answers');
     // Append question container quesions container:
@@ -167,14 +191,14 @@ const updateFields = () =>{
       // Create label for answer input
       let aLabel = createLabel(className, 'Answer option');
       // Create input for answers
-      let aInput = createAnswerTextInput('questions' + qIndex + '.answers', className, question.answers[qa].answer, qIndex, aIndex);
+      let aInput = createAnswerTextInput('q' + qIndex + '.answers', className, question.answers[qa].answer, qIndex, aIndex);
       // Create label for answer correct input:
       let acLabel = createLabel('answerOpt' + qa, 'Correct answer')
       // Create correct answer input:
       let acInput = document.createElement('input');
       acInput.setAttribute('type', 'radio');
       acInput.setAttribute('id', 'answerOpt' + aIndex);
-      acInput.setAttribute('name', 'questions' + qIndex + '.correct');
+      acInput.setAttribute('name', 'question' + qIndex + 'correct');
       acInput.setAttribute('value', aIndex);
       if(answer.correct == true) acInput.setAttribute('checked', 'checked');
       acInput.addEventListener('click', (e)=>{

@@ -45,7 +45,17 @@ router.get('/create-quiz', async(req, res, next)=>{
 })
 // POST Create a quiz form
 router.post('/create-quiz', async(req, res, next)=>{
-  console.log(req.body.questions);
+  for(let index in req.body.question){
+    const correctAnswer = req.body['question' + index + 'correct'];
+    const question = req.body.question[index];
+    const answers = req.body['q' + index + '.answers'];
+    let correctAnswerValue = '';
+    for( let answer in answers){
+      if(answer == correctAnswer) correctAnswerValue = answers[answer];
+    }
+    console.log(req);
+    
+  }
   res.redirect('/quiz/create-quiz');
 })
 
