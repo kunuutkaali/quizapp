@@ -4,7 +4,7 @@ var connectEnsureLoggedIn = require('connect-ensure-login');
 const Category = require('../models/quizCategory');
 
 router.get('/', (req, res, next)=>{
-  res.send('Responded with resource')
+  res.send('Here we are going to show quiz overview')
 })
 // Quiz categories
 router.get('/quiz-categories', async(req, res, next)=>{
@@ -45,8 +45,7 @@ router.get('/create-quiz', async(req, res, next)=>{
 })
 // POST Create a quiz form
 router.post('/create-quiz', async(req, res, next)=>{
-  const data = req.body;
-  console.log(data);
+  console.log(req.body.questions);
   res.redirect('/quiz/create-quiz');
 })
 

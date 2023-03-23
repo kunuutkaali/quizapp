@@ -28,10 +28,15 @@ nav ul a:hover{
 /* Questions */
 #quiz-questions{
   border-top: 1px solid;
-  border-bottom: 1px solid;
   padding-top: 2rem;
 }
 .question-answers{
   padding:2rem;
+}
+.q-container{
+  padding-bottom: 1rem;
   border-bottom: 1px solid;
+}
+.create-quiz-form{
+  padding-bottom: 5vh;
 }

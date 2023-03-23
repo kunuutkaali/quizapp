@@ -15,7 +15,6 @@ router.get('/login', (req, res, next)=>{
 })
 // GET Log in form
 router.post('/login', passport.authenticate('local', {failureRedirect:'/users/login', failureMessage: true}), (req, res, next)=>{
-  console.log(req.user)
   res.redirect('/users/dashboard');
 })
 

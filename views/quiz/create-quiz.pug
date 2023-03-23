@@ -2,32 +2,21 @@ extends ../layout.pug
 
 block content 
   h1 Creating a quiz
-  form(action="/quiz/create-quiz", method="post")
+  form(class="form create-quiz-form", action="/quiz/create-quiz", method="post")
+    input(type="submit", value="Save and show")
     label(for="title") Quiz title
-    input(type="text", id="title", name="title", required, autofocus)
+    input(type="text", id="title", name="title", required, value="Quiz")
     label(for="category") Quiz category
     select(id="category")
       option(selected) New..
       if locals.categories
         each category in categories
-          option(value=category.id) #{category.title}
+          option(value=category.id, selected) #{category.title}
     label(for="newCategory") If new category:
     input(type="text", name="newCategory", placeholder="..New Category")
     label(for="description") Quiz description:
-    input(type="text", id="description", name="description", required)
+    input(type="text", id="description", name="description", value="Some description")
     
     #quiz-questions
-    
-      .question-group.question1
-        button(id="question1DelBtn") Delete question
-        label(for="question1") Question 1
-        input(type="text", name="question1", id="question1")
-        .question-answers
-          .answer-opt1
-            label(for="q1a1") Answer option 1
-            input(type="text", name="q1a1", id="q1a1")
-            label(for="answerOpt1") Correct answer 
-            input(type="radio", id="answerOpt1", name="question1Correct", value="1", checked)
-    hr
-    input(type="submit", value="Save and show")
+    button(id='createNewQBtn')
     script(src="/javascripts/quizCreator.js") 
