@@ -16,6 +16,7 @@ const showNewCategoryInput = () =>{
   }
   console.log(newCategoryCheckbox.checked);
 }
+// Hide / show new category input or select category
 const categoryGroup = document.getElementById('categoryGroup');
 const newCategoryLabel = document.getElementById('newCategoryLabel');
 const categoryTitle = document.getElementById('categoryTitle');
@@ -23,8 +24,10 @@ const newCategory = document.getElementById('newCategory');
 newCategory.addEventListener('change', showNewCategoryInput);
 
 
+// Questions container div
 const quizQuestions = document.getElementById('quiz-questions');
 
+// Questions
 let questionsList = [{
   question: 'Question one',
   answers: [{
@@ -159,7 +162,7 @@ function createLabel(forEl, text){
   return label;
 }
 
-
+// Update the input question and answer fields
 const updateFields = () =>{
   quizQuestions.innerHTML = '';
   let q = 0;
